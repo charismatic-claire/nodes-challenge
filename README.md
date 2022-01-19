@@ -17,7 +17,7 @@ A little full stack project about KNIME nodes
 
 ## How to install and start the frontend
 * `$ cd nodes-frontend`
-* `$ npm instal`
+* `$ npm install`
 * `$ npm run serve`
 * Open a browser and check [http://localhost:8080/](http://localhost:8080/)
 * If you see something like this, it works:
