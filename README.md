@@ -27,8 +27,8 @@ A little full stack project about KNIME nodes
 ## How to use
 * You can use a Python script to populate the backend:
   ```
-  $ cd nodes-backend/src/cli/python`
-  $ python nodes-api-calls.py add_nodes`
+  $ cd nodes-backend/src/cli/python
+  $ python nodes-api-calls.py add_nodes
 
   ```
 * You can use the Python script to check if the import went through:
