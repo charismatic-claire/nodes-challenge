@@ -1,7 +1,7 @@
 <template>
   <div id="nodes-list">
     <h1>{{ heading }}</h1>
-    <Node v-for="node in nodes" :key="node.id" :node="node" @updated="forwardToParent"/>
+    <Node v-for="node in nodes" :key="node.id" :node="node" @updated="forwardEventToParent"/>
   </div>
 </template>
 
@@ -18,7 +18,7 @@ export default {
     nodes: Array
   },
   methods: {
-    forwardToParent() {
+    forwardEventToParent() {
       this.$emit('updated')
     }
   }

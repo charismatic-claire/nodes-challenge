@@ -10,9 +10,9 @@
             {{ option.name }}
           </option>
         </select>
-        <p>Please set a description:</p>
+        <p>Please set a description (string):</p>
         <input v-model="description" placeholder="Your description here">
-        <p>Update predecessor:</p>
+        <p>Set a predecessor (integer):</p>
         <input v-model="predecessor" placeholder="Your predecessor here">
       </div>
       <div class="right">
@@ -58,18 +58,16 @@ export default {
       this.description = ''
       this.predecessor = null
     },
-    submit() {
+    async submit() {
       let node = this.selectedNode
       node.description = this.description
       node.predecessor = this.predecessor
-      const url = '/api/nodes/add'
+      const url = '/api/nodes'
       console.log('POST <' + JSON.stringify(node) + '> to <' + url + '>')
-      axios.post(url, node)
-          .then(response => {
-            console.log(response.data)
-            this.reset()
-            this.$emit('updated')
-          })
+      const response = await axios.post(url, node)
+      console.log(response.data)
+      this.reset()
+      this.$emit('updated')
     }
   }
 }

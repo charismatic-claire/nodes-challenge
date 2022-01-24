@@ -22,13 +22,11 @@ export default {
     }
   },
   methods: {
-    fetchNodes() {
+    async fetchNodes() {
       console.log('GET \'.../api/nodes\'')
-      axios.get('/api/nodes')
-          .then(response => {
-            console.log(response.data)
-            this.nodes = response.data
-          })
+      const response = await axios.get('/api/nodes')
+      console.log(response.data)
+      this.nodes = response.data
     }
   },
   mounted() {

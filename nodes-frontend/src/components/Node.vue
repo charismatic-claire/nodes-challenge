@@ -21,9 +21,9 @@
     <div id="editor" v-show="showEditor">
       <div class="item">
         <h2>{{ node.name }} (#{{ node.id }})</h2>
-        <p>Update description:</p>
+        <p>Update description (string):</p>
         <input v-model="description" :placeholder="description">
-        <p>Update predecessor:</p>
+        <p>Update predecessor (integer):</p>
         <input v-model="predecessor" :placeholder="predecessor">
       </div>
       <div class="buttons">
@@ -50,14 +50,12 @@ export default {
     }
   },
   methods: {
-    deleteNode() {
-      const url = '/api/nodes/delete/' + this.node.id + '/'
+    async deleteNode() {
+      const url = '/api/nodes/' + this.node.id + '/'
       console.log('DELETE <' + url + '>')
-      axios.delete(url)
-          .then(response => {
-            console.log(response.data)
-            this.$emit('updated')
-          })
+      const response = await axios.delete(url)
+      console.log(response.data)
+      this.$emit('updated')
     },
     editNode() {
       console.log('Editor should appear for node <{(' + this.node.id + ') ' + this.node.name + '>')
@@ -73,14 +71,12 @@ export default {
       this.showViewer = true
       this.showEditor = false
     },
-    updateNode(node) {
-      const url = '/api/nodes/update'
+    async updateNode(node) {
+      const url = '/api/nodes'
       console.log('PUT <' + JSON.stringify(node) + '> to <' + url + '>')
-      axios.put(url, node)
-          .then(response => {
-            console.log(response.data)
-            this.$emit('updated')
-          })
+      const response = await axios.put(url, node)
+      console.log(response.data)
+      this.$emit('updated')
     }
   },
   computed: {

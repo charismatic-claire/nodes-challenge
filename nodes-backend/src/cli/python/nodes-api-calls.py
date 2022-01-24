@@ -14,7 +14,7 @@ def add_nodes():
         {'type': 'Sink', 'name': 'CSV Writer', 'description': 'write to output file', 'predecessor': 6}
     ]
     session = Session()
-    url = f'{base_url}/nodes/add'
+    url = f'{base_url}/nodes'
     for node in nodes:
         print(f'POST <{node}> to <{url}>')
         response = session.post(url=url, json=node)

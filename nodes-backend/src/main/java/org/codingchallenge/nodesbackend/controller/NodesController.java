@@ -22,7 +22,7 @@ public class NodesController {
                 .collect(Collectors.toList());
     }
 
-    @PostMapping("/nodes/add")
+    @PostMapping("/nodes")
     public Node saveNode(@RequestBody Node node) {
         return nodesRepository.save(node);
     }
@@ -32,17 +32,17 @@ public class NodesController {
         return nodesRepository.findById(nodeId).get();
     }
 
-    @DeleteMapping("/nodes/delete")
+    @DeleteMapping("/nodes")
     public void deleteAllNodes() {
         nodesRepository.deleteAll();
     }
 
-    @DeleteMapping("/nodes/delete/{nodeid}")
+    @DeleteMapping("/nodes/{nodeid}")
     public void deleteNode(@PathVariable("nodeid") int nodeId) {
         nodesRepository.deleteById(nodeId);
     }
 
-    @PutMapping("/nodes/update")
+    @PutMapping("/nodes")
     public Node updateNode(@RequestBody Node node) {
         return nodesRepository.save(node);
     }
